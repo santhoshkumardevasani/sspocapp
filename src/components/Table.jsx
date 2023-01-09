@@ -15,6 +15,7 @@ const rows = [
     { id: 8, affiliateName: 'Rocio West', mostRecentReferral: '07 Jan 2023', revenueGenerated: '$356.05', paidPayouts: '$0.00', unpaidPayouts: '$36.34', readyPayouts: '$38.80', breakdown: 'view ->', type: 'Store Credit' },
 
 ];
+sessionStorage.setItem("rows", JSON.stringify(rows));
 export default function Table() {
     const [open, setOpen] = React.useState(false);
     const [rowData, setRowData] = React.useState({});
@@ -100,7 +101,6 @@ export default function Table() {
                 checkboxSelection
                 selectionModel={selectionModel}
                 onSelectionModelChange={(newSelectionModel) => {
-                    sessionStorage.setItem("rows", JSON.stringify(rows));
                     eventBus.dispatch("getAllRows", { rows: rows });
                     setSelectionModel(newSelectionModel);
 
